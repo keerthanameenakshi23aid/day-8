@@ -1,0 +1,19 @@
+def add(x, y): return x + y
+def subtract(x, y): return x - y
+def multiply(x, y): return x * y
+def divide(x, y): return x / y if y != 0 else "Error: Division by zero"
+
+def calculator():
+    operations = {'+': add, '-': subtract, '*': multiply, '/': divide}
+    print("Operations: +, -, *, /")
+    op = input("Choose operation: ")
+    if op in operations:
+        try:
+            x, y = float(input("Enter first number: ")), float(input("Enter second number: "))
+            print(f"Result: {operations[op](x, y)}")
+        except ValueError:
+            print("Invalid input. Please enter numeric values.")
+    else:
+        print("Invalid operation.")
+
+calculator()
