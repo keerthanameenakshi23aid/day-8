@@ -1,19 +1,25 @@
-def add(x, y): return x + y
-def subtract(x, y): return x - y
-def multiply(x, y): return x * y
-def divide(x, y): return x / y if y != 0 else "Error: Division by zero"
+#include <stdio.h>
 
-def calculator():
-    operations = {'+': add, '-': subtract, '*': multiply, '/': divide}
-    print("Operations: +, -, *, /")
-    op = input("Choose operation: ")
-    if op in operations:
-        try:
-            x, y = float(input("Enter first number: ")), float(input("Enter second number: "))
-            print(f"Result: {operations[op](x, y)}")
-        except ValueError:
-            print("Invalid input. Please enter numeric values.")
-    else:
-        print("Invalid operation.")
+int add(int x, int y) { return x + y; }
+int subtract(int x, int y) { return x - y; }
+int multiply(int x, int y) { return x * y; }
+float divide(int x, int y) { return (y != 0) ? (float)x / y : 0; }
 
-calculator()
+int main() {
+    int a, b;
+    char op;
+    printf("Enter two numbers: ");
+    scanf("%d %d", &a, &b);
+    printf("Enter operator (+, -, *, /): ");
+    scanf(" %c", &op);
+
+    switch (op) {
+        case '+': printf("Result: %d\n", add(a, b)); break;
+        case '-': printf("Result: %d\n", subtract(a, b)); break;
+        case '*': printf("Result: %d\n", multiply(a, b)); break;
+        case '/': printf("Result: %.2f\n", divide(a, b)); break;
+        default: printf("Invalid operator\n");
+    }
+
+    return 0;
+    }
